@@ -1,0 +1,46 @@
+{
+  "name": "shrtnr",
+  "main": "src/index.tsx",
+  "assets": { "directory": "public" },
+  "compatibility_date": "2026-04-01", // LOL
+  "compatibility_flags": ["nodejs_compat"],
+  "upload_source_maps": true,
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true
+    }
+  },
+  // KV namespace ID is resolved at deploy time by scripts/resolve-bindings.sh
+  "kv_namespaces": [
+    {
+      "binding": "SLUG_KV",
+      "id": "72aa938a42784e2e97407849b2adda8b"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "shrtnr-db",
+      "migrations_dir": "migrations","database_id": "2819a1de-3d55-4787-b2d0-cad76208219c"
+    }
+  ],
+  // Durable Object for MCP agent sessions
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "ShrtnrMCP"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ShrtnrMCP"]
+    }
+  ]
+}

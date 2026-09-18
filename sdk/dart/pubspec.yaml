@@ -1,0 +1,30 @@
+name: shrtnr
+description: Dart client for the shrtnr URL shortener API. Create short links, manage custom slugs, and read click analytics.
+version: 2.2.0
+homepage: https://oddb.it/shrtnr-website-pub
+repository: https://github.com/oddbit/shrtnr
+issue_tracker: https://github.com/oddbit/shrtnr/issues
+# x-spec-hash: sha256:fd397e52e38f62e610630a8145bd2f2f8a552eabc2cd953bc21b83a9877dc181
+# Stored as a comment rather than a top-level key to avoid a pana score deduction for unknown manifest fields.
+
+topics:
+  - url-shortener
+  - short-url
+  - link-management
+  - analytics
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  http: ^1.6.0
+  meta: ^1.19.0
+
+dev_dependencies:
+  lints: ^6.1.0
+  # Floor stays low so the constraint resolves across the whole SDK range this
+  # package claims above. test 1.31.2 requires Dart >=3.11.0, so pinning that
+  # floor made `dart pub get` impossible on any Dart from 3.4.0 to 3.10.x while
+  # the manifest still advertised support for them. A caret range lets pub pick
+  # the newest test a given SDK can run: 1.31.1 on Dart 3.10, newest on CI.
+  test: ^1.25.0
